@@ -2,7 +2,7 @@ class Doctor
 attr_reader :name
 
 def initialize attributes
-  @name = name
+  @name = attributes[:name]
 end
 
 def name
