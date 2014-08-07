@@ -10,7 +10,6 @@ def main_menu
   puts "2 > New Patient"
   puts "3 > New Medical Specialty"
   puts "4 > New Insurance Company"
-  puts "5 > Make Appointment"
 
   puts "D > Show Doctors"
   puts "P > Show Patients"
