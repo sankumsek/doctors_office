@@ -7,24 +7,24 @@ require 'patient.rb'
 DB = PG.connect({:dbname => 'doc_office_test'})
 
 describe 'Doctor' do
-  it 'initializes' do
+  it 'initializes with name and specialty' do
     doctor = Doctor.new({:name=>'Seuss', :specialty=>1})
     expect(doctor).to be_an_instance_of Doctor
   end
 
 
-  it 'blank array' do
+  it 'starts of with a blank array' do
       expect(Doctor.all).to eq []
   end
 
 
-  it 'saves' do
+  it 'saves entry' do
     doctor = Doctor.new({:name=>'Seuss', :specialty=>1})
     doctor.save
     expect(Doctor.all[0]).to eq doctor
   end
 
-  it 'new specialty' do
+  it 'allows you to enter in new specialty' do
     doctor = Doctor.new({:name=>'Seuss', :specialty=>1})
     doctor.save
     doctor.edit_specialty(2)
@@ -51,7 +51,7 @@ describe 'Doctor' do
     expect(doctor.insurance).to eq 1
   end
 
-  it 'all doctors that accept given insurance' do
+  it 'view all doctors that accept given insurance' do
     doctor1 = Doctor.new({:name=>'Seuss'})
     doctor1.save
     doctor1.edit_insurance(1)
@@ -64,7 +64,7 @@ describe 'Doctor' do
     expect(Doctor.list_by_insurance(1)).to eq [doctor1, doctor2]
   end
 
-  it 'removes' do
+  it 'removes entry to become empty' do
     doctor = Doctor.new({:name=>'Seuss'})
     doctor.save
     doctor.remove
